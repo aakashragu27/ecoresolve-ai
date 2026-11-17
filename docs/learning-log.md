@@ -9,3 +9,4 @@
 7. **Responding to events** — pass the handler, don't call it: `onClick={handleReport}` runs on click, while `onClick={handleReport()}` would run during render.
 8. **State, Hooks and sharing data** — `useState` gives a component memory; two `ReportCounter`s with their own state count separately, so I lifted `count` into `IncidentPreview` and passed `count` + `onClick` down as props so both move together.
 9. **Express health API** — `index.js` loads `.env` with dotenv, connects to Atlas with `mongoose.connect` before `app.listen`, and `GET /api/health` returns `{ ok: true }`, which Render uses to wake the sleeping free-tier service.
+10. **FastAPI stub** — Pydantic models check the /analyze request against the contract (bad input → 422), and /analyze returns fixed JSON in the final shape, so the Node API is built against it now and each agent replaces only its own key in week 3.
